@@ -1,11 +1,8 @@
-const style=document.body.style
-function CSSRandom(){
-    style.setProperty('--random',Math.random())
-    const timeout=style.getPropertyValue('--random-timeout')
-    if(timeout){
-        setTimeout(CSSRandom,parseInt(timeout))
-    }else{
-        requestAnimationFrame(CSSRandom)
-    }
-}
-CSSRandom()
+/**
+ * On import, sets the global css variable `--random` to `Math.random()` before each draw
+ * @module CSSRandom
+ */
+(function CSSRandom() {
+    document.documentElement.style.setProperty('--random', Math.random())
+    requestAnimationFrame(CSSRandom)
+})()

@@ -1,5 +1,6 @@
 /** @module FileReaderAsync */
 
+/** @class */
 export class FileReaderAsync {
     /**
      * @param {String} type The return type (ArrayBuffer, BinaryString, Text, DataURL)
