@@ -24,7 +24,7 @@ export function append(object,name,value){
         if(object[name] instanceof Array){
             object[name].push(value)
         }else{
-            object[name]=[formDataDeep[name],value]
+            object[name]=[object[name],value]
         }
     }else{
         object[name]=value
@@ -79,6 +79,7 @@ export class FormDataDeep extends FormData {
      * @param {Boolean} primitives whether to convert string values to primitives. Defaults `false`.
      */
     constructor(form,primitives=false){
+        super()
         if(form instanceof HTMLFormElement){
             Object.assign(this,getFormDataDeep(form,primitives))
         }else{
@@ -164,3 +165,5 @@ export class FormDataDeep extends FormData {
         }
     }
 }
+
+export default FormDataDeep
