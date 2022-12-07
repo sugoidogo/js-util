@@ -1,0 +1,13 @@
+<script>
+    const params=new URLSearchParams(location.search)
+    if(params.has('redirect_uri')){
+        localStorage.setItem('redirect_uri',params.get('redirect_uri'))
+    }
+    if(params.has('target')){
+        location.replace(params.get('target'))
+    }else{
+        const redirect_uri=new URL(localStorage.getItem('redirect_uri'))
+        redirect_uri.hash=location.hash
+        location.replace(redirect_uri)
+    }
+</script>
