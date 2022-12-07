@@ -46,3 +46,5 @@ export class FileReaderAsync {
         return FileReaderAsync.readAs('DataURL',blob)
     }
 }
+
+export default FileReaderAsync
