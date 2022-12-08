@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: fontScale</title>
+    <title>JSDoc: Module: AssetLoader</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: fontScale</h1>
+    <h1 class="page-title">Module: AssetLoader</h1>
 
     
 
@@ -67,7 +67,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fontScale.mjs.html">fontScale.mjs</a>, <a href="fontScale.mjs.html#line1">line 1</a>
+        <a href="AssetLoader.mjs.html">AssetLoader.mjs</a>, <a href="AssetLoader.mjs.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -106,7 +106,7 @@
     
 
     
-    <h4 class="name" id=".fontScale"><span class="type-signature">(static) </span>fontScale<span class="signature">(element, maxHeight)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id=".loadAsset"><span class="type-signature">(static) </span>loadAsset<span class="signature">(dataURL, id)</span><span class="type-signature"></span></h4>
     
 
     
@@ -114,12 +114,7 @@
 
 
 <div class="description">
-    <p>Scale an element's font size so that it doesn't overflow the viewport.
-Note that some css may be required for this to work,
-for example setting <code>display: flex;</code> on the parent element,
-and this function relies on the element being visible.
-If you want to keep your element invisible until font scaling finishes,
-use <code>opacity: 0;</code></p>
+    <p>Loads a data url and returns the resulting element, font face, or when the type is unrecognized, a fetch response.</p>
 </div>
 
 
@@ -155,13 +150,13 @@ use <code>opacity: 0;</code></p>
 
         <tr>
             
-                <td class="name"><code>element</code></td>
+                <td class="name"><code>dataURL</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">HTMLElement</span>
+<span class="param-type">String</span>
 
 
             
@@ -171,20 +166,20 @@ use <code>opacity: 0;</code></p>
 
             
 
-            <td class="description last"><p>the element to be scaled</p></td>
+            <td class="description last"></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>maxHeight</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">String</span>
 
 
             
@@ -194,7 +189,7 @@ use <code>opacity: 0;</code></p>
 
             
 
-            <td class="description last"><p>maximum font size (which is equivalent to pixel hight)</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -235,7 +230,7 @@ use <code>opacity: 0;</code></p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="fontScale.mjs.html">fontScale.mjs</a>, <a href="fontScale.mjs.html#line14">line 14</a>
+        <a href="AssetLoader.mjs.html">AssetLoader.mjs</a>, <a href="AssetLoader.mjs.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -260,28 +255,6 @@ use <code>opacity: 0;</code></p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>the resulting font size</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Number</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 

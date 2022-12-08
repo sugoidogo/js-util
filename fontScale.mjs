@@ -1,35 +1,40 @@
 /** @module fontScale */
 
 /**
- * Scale an element's font size to fit inside the given width.
- * @param {HTMLElement} element 
- * @param {Int} width defaults to `window.innerWidth`
- * @returns {Promise<Int>} resulting font size in px
+ * Scale an element's font size so that it doesn't overflow the viewport.
+ * Note that some css may be required for this to work,
+ * for example setting `display: flex;` on the parent element,
+ * and this function relies on the element being visible.
+ * If you want to keep your element invisible until font scaling finishes,
+ * use `opacity: 0;`
+ * @param {HTMLElement} element the element to be scaled
+ * @param {Number} maxHeight maximum font size (which is equivalent to pixel hight)
+ * @returns {Number} the resulting font size
  */
-export function fontScale(element,width=innerWidth){
+export function fontScale(element,maxHeight=innerHeight){
     return new Promise(function(resolve){
-        let fontSize=0
-        element.style.fontSize=fontSize+'px'
-        width-=element.clientWidth
-        function down(){
-            if(element.clientWidth>=width){
-                fontSize-=1
-                element.style.fontSize=fontSize+'px'
-                requestAnimationFrame(down)
+        function scaleup(){
+            let size=parseInt(getComputedStyle(element).fontSize)
+            let bounds=element.getBoundingClientRect()
+            if(bounds.right<innerWidth && size<maxHeight){
+                element.style.fontSize=size+1+'px'
+                setTimeout(scaleup)
             }else{
-                resolve(fontSize)
+                setTimeout(scaledown)
+            }
+            
+        }
+        function scaledown(){
+            let size=parseInt(getComputedStyle(element).fontSize)
+            let bounds=element.getBoundingClientRect()
+            if(bounds.right>innerWidth || size>maxHeight){
+                element.style.fontSize=size-1+'px'
+                setTimeout(scaledown)
+            }else{
+                resolve(size)
             }
         }
-        function up(){
-            if(element.clientWidth<width){
-                fontSize+=10
-                element.style.fontSize=fontSize+'px'
-                requestAnimationFrame(up)
-            }else{
-                requestAnimationFrame(down)
-            }
-        }
-        requestAnimationFrame(up)
+        setTimeout(scaleup)
     })
 }
 
