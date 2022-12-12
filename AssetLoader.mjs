@@ -9,19 +9,19 @@ export async function loadAsset(dataURL,id=undefined){
     const type=dataURL.split(';')[0].split(':')[1]
     switch(type){
         case 'text/css':{
-            const style=new HTMLStyleElement()
+            const style=document.createElement('style')
             style.id=id
             style.innerHTML=atob(dataURL.split(',')[1])
             return style
         }
         case 'text/html':{
-            const element=new HTMLElement()
-            element.id=id
+            const element=document.createElement('span')
             element.outerHTML=atob(dataURL.split(',')[1])
+            element.id=id
             return element
         }
         case 'text/javascript':{
-            const script=new HTMLScriptElement()
+            const script=document.createElement('script')
             script.id=id
             script.innerHTML=atob(dataURL.split(',')[1])
             return script
@@ -30,7 +30,7 @@ export async function loadAsset(dataURL,id=undefined){
             const mtype=type.split('/')[0]
             switch(mtype){
                 case 'audio':{
-                    const audio=new HTMLAudioElement()
+                    const audio=document.createElement('audio')
                     audio.id=id
                     audio.src=dataURL
                     return audio
@@ -39,13 +39,13 @@ export async function loadAsset(dataURL,id=undefined){
                     return await new FontFace(id,dataURL).load()
                 }
                 case 'image':{
-                    const img=new HTMLImageElement()
+                    const img=document.createElement('img')
                     img.id=id
                     img.src=dataURL
                     return img
                 }
                 case 'video':{
-                    const video=new HTMLVideoElement()
+                    const video=document.createElement('video')
                     video.id=id
                     video.src=dataURL
                 }
