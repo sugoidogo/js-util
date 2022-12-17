@@ -4,6 +4,7 @@
  * Loads a data url and returns the resulting element, font face, or when the type is unrecognized, a fetch response.
  * @param {String} dataURL
  * @param {String} id
+ * @param {Boolean} unsafe load assets directly into the DOM
  */
 export async function loadAsset(dataURL,id=undefined,unsafe=false){
     const type=dataURL.split(';')[0].split(':')[1]
