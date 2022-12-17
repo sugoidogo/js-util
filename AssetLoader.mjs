@@ -55,7 +55,7 @@ export async function loadAsset(dataURL,id=undefined,unsafe=false){
                     if(unsafe){
                         document.fonts.add(await new FontFace(id,dataURL).load())
                     }
-                    return await new FontFace(id,dataURL).load()
+                    return new FontFace(id,dataURL)
                 }
                 case 'image':{
                     const img=document.createElement('img')
