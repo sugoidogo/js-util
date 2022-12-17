@@ -31,12 +31,12 @@ export async function loadAsset(dataURL,id=undefined,unsafe=false){
             return element
         }
         case 'text/javascript':{
+            if(unsafe){
+                return import(dataURL)
+            }
             const script=document.createElement('script')
             script.id=id
             script.innerHTML=atob(dataURL.split(',')[1])
-            if(unsafe){
-                import('data:text/javascript,'+script.innerHTML)
-            }
             return script
         }
         default:{
